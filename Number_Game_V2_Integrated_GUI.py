@@ -31,7 +31,7 @@ from kivy.utils import get_color_from_hex
 
 # SYSTEM 11A — LOAD THE EXISTING ENGINE, DON'T REBUILD ITS BRAIN
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ENGINE_PATH = os.path.join(BASE_DIR, "main.py")
+ENGINE_PATH = os.path.join(BASE_DIR, "Number_Game_V2_fixed.py")
 
 if not os.path.exists(ENGINE_PATH):
     raise FileNotFoundError(
