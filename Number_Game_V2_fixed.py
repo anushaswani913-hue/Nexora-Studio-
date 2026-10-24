@@ -21,7 +21,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROFILE_FILE = os.path.join(BASE_DIR, "number_game_profiles.json")
 SAVE_FILE = os.path.join(BASE_DIR, "number_game_save.json")
 HISTORY_FILE = os.path.join(BASE_DIR, "number_game_history.json")
+def configure_storage(data_dir):
+    global PROFILE_FILE, SAVE_FILE, HISTORY_FILE
 
+    PROFILE_FILE = os.path.join(data_dir, "number_game_profiles.json")
+    SAVE_FILE = os.path.join(data_dir, "number_game_save.json")
+    HISTORY_FILE = os.path.join(data_dir, "number_game_history.json")
 # ============================================================
 # SYSTEM 1B: GENERAL DATABASE FUNCTIONS
 # ============================================================
