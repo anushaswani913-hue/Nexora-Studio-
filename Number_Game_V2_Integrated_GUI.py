@@ -294,6 +294,7 @@ class NumberGameApp(App):
     title = "Number Game V2"
 
     def build(self):
+        engine.configure_storage(self.user_data_dir)
         Window.clearcolor = BG
         self.sfx = SoundFX()
         self.profiles = engine.load_profiles()
