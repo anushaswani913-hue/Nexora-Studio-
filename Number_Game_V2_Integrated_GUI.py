@@ -84,7 +84,7 @@ class SoundFX:
     """Generates and plays short UI/game sounds. Silently degrades if audio is unavailable."""
     def __init__(self):
         self.sounds = {}
-        sound_dir = os.path.join(BASE_DIR, "number_game_sounds")
+        sound_dir = os.path.join(App.get_running_app().user_data_dir, "number_game_sounds")
         patterns = {
             "tap": [(760, .045, .16)],
             "transition": [(420, .055, .13), (620, .065, .12)],
