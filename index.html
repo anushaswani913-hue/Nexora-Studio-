@@ -1,1 +1,439 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Nexora Studio creates original games with curiosity, purpose, and creativity.">
+  <title>Nexora Studio | Made to Play</title>
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #131923;
+      --text: #f4f7fc;
+      --muted: #a7b0c0;
+      --blue: #8ab8ff;
+      --cyan: #8de5ef;
+      --line: rgba(255,255,255,0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 85% 0%, #182945 0%, transparent 38%),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--cyan);
+      border-radius: 13px;
+      color: var(--cyan);
+      font-size: 23px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 35px;
+      padding-top: 85px;
+      padding-bottom: 85px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: 750;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      margin: 18px 0;
+    }
+
+    .gradient {
+      color: var(--blue);
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 540px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      background: var(--cyan);
+      color: #071015;
+      border-color: var(--cyan);
+    }
+
+    .hero-art {
+      min-height: 310px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 25px;
+      background: linear-gradient(145deg, #182338, #0e1119);
+    }
+
+    .hero-art::before,
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border: 1px solid #8de5ef35;
+      border-radius: 50%;
+    }
+
+    .hero-art::after {
+      width: 320px;
+      height: 320px;
+      border-color: #8ab8ff25;
+    }
+
+    .symbol {
+      z-index: 1;
+      width: 120px;
+      height: 120px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--cyan);
+      border-radius: 30px;
+      background: #101725;
+      box-shadow: 0 0 55px #8ab8ff25;
+      font-size: 64px;
+      font-weight: 850;
+    }
+
+    .art-label {
+      position: absolute;
+      bottom: 18px;
+      left: 20px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    section { padding: 55px 0; }
+
+    .section-heading {
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin: 8px 0;
+    }
+
+    .muted { color: var(--muted); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 25px;
+      background: linear-gradient(145deg, var(--panel), #0f131b);
+      border: 1px solid var(--line);
+      border-radius: 19px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #8de5ef50;
+      border-radius: 14px;
+      color: var(--cyan);
+      font-size: 24px;
+      margin-bottom: 22px;
+    }
+
+    h3 { margin: 0 0 8px; }
+
+    .status {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 4px 10px;
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 13px;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .principle-number {
+      color: var(--cyan);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .manifesto {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 30px;
+      background: linear-gradient(110deg, #8ab8ff12, #8de5ef08);
+    }
+
+    .manifesto p {
+      font-size: clamp(25px, 4vw, 43px);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    footer {
+      margin-top: 35px;
+      padding: 25px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { gap: 12px; font-size: 12px; }
+      .hero { grid-template-columns: 1fr; padding-top: 55px; gap: 28px; }
+      .hero-art { min-height: 250px; }
+      .cards, .principles { grid-template-columns: 1fr; }
+      section { padding: 38px 0; }
+      h1 { letter-spacing: -2px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">
+        <span class="logo">N</span>
+        <span>NEXORA<small>STUDIO</small></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#studio">Studio</a>
+        <a href="#games">Games</a>
+        <a href="#approach">Approach</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Independent · Imagination · Play</div>
+        <h1>Built with curiosity.<br>
+          <span class="gradient">Designed to play.</span>
+        </h1>
+
+        <p class="lead">
+          Nexora Studio is an independent creative project exploring
+          original game ideas, thoughtful design, and experiences
+          made for players — not paywalls.
+        </p>
+
+        <div class="actions">
+          <a class="button primary" href="#games">Explore our games ↗</a>
+          <a class="button" href="#studio">Meet the studio</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Nexora abstract logo">
+        <div class="symbol">N</div>
+        <div class="art-label">IDEAS INTO EXPERIENCES / 001</div>
+      </div>
+    </section>
+
+    <section id="studio">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">The studio</div>
+          <h2>Small beginnings.<br>Room for bigger ideas.</h2>
+          <p class="muted">
+            We believe a good game starts with curiosity, grows through
+            testing, and improves when real people play it.
+            Nexora is being built one project at a time.
+          </p>
+        </div>
+
+        <div class="principles">
+          <article class="card">
+            <div class="principle-number">01 / MADE TO PLAY</div>
+            <h3>Fun comes first.</h3>
+            <p class="muted">
+              Our goal is to create games people can enjoy without
+              subscriptions or in-game purchases.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="principle-number">02 / BUILT BY LEARNING</div>
+            <h3>Improve every version.</h3>
+            <p class="muted">
+              We prototype, test, listen, and improve.
+              Every project teaches us something new.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="games">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">The catalogue</div>
+          <h2>Games from Nexora.</h2>
+          <p class="muted">
+            One project at a time. More ideas will appear here
+            as they are developed and tested.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">#</div>
+            <div class="status">IN DEVELOPMENT</div>
+            <h3>Number Guessing Game</h3>
+            <p class="muted">
+              Guess the hidden number, challenge friends, explore
+              different match formats, and build your score.
+            </p>
+            <p class="muted">
+              Profiles · Match modes · Scoring · Match history
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✦</div>
+            <div class="status">FUTURE PROJECTS</div>
+            <h3>What's next?</h3>
+            <p class="muted">
+              New ideas, experiments, and future games will find
+              their home here as Nexora grows.
+            </p>
+          </article>
+        </div>
+
+        <p class="muted" style="font-size:12px; margin-top:18px;">
+          No public downloads yet. Download links will be added
+          after a game build is ready and tested.
+        </p>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container">
+        <div class="manifesto">
+          <div class="eyebrow">Our approach</div>
+          <p>Built with curiosity.<br>
+            Designed with purpose.<br>
+            <span class="gradient">Made to play.</span>
+          </p>
+          <span class="muted">
+            Creative ideas. Thoughtful design. Games made to be enjoyed.
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <span>© 2026 Nexora Studio · Independent game projects</span>
+    <span>Free to play. Built one idea at a time.</span>
+  </footer>
+</body>
+</html>
+
