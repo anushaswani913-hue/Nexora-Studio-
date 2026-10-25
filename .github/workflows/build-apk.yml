@@ -1,26 +1,13 @@
 name: Build Number Game V2 APK
 
-"on":
-workflow_dispatch:
-push:
-paths:
-- "main.py"
-- "Number_Game_V2_fixed.py"
-- "Number_Game_V2_Integrated_GUI.py"
-- "buildozer.spec"
-- ".github/workflows/build-apk.yml"
-
-permissions:
-contents: read
+on: [workflow_dispatch]
 
 jobs:
 build:
-name: Build Android APK
 runs-on: ubuntu-22.04
-
 steps:
-  - name: Check out repository
-    uses: actions/checkout@v4
+- name: Check out repository
+uses: actions/checkout@v4
 
   - name: Set up Python
     uses: actions/setup-python@v5
@@ -33,7 +20,7 @@ steps:
       distribution: temurin
       java-version: "17"
 
-  - name: Install Linux dependencies
+  - name: Install dependencies
     run: |
       sudo apt-get update
       sudo apt-get install -y git zip unzip autoconf automake autopoint gettext libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev
