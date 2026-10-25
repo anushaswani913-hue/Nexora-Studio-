@@ -1,0 +1,38 @@
+
+name: Build Number Game V2 APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'main.py'
+      - 'Number_Game_V2_fixed.py'
+      - 'Number_Game_V2_Integrated_GUI.py'
+      - 'buildozer.spec'
+      - '.github/workflows/build-apk.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build APK
+        uses: ArtemSBulgakov/buildozer-action@v1
+        id: buildozer
+        with:
+          command: buildozer android debug
+          buildozer_version: stable
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Number-Game-V2-APK
+          path: ${{ steps.buildozer.outputs.filename }}
+          if-no-files-found: error
