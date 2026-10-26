@@ -16,6 +16,9 @@ android.api = 35
 android.minapi = 24
 android.archs = arm64-v8a, armeabi-v7a
 
+p4a.branch = develop
+p4a.commit = e772ad93f20a61c0bbe1cf8955e073cfb41062e1
+
 [buildozer]
 
 log_level = 2
