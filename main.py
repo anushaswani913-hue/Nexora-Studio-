@@ -1010,5 +1010,24 @@ class ProfileScreen(Screen):
         self.col.add_widget(back)
 
 
+
 if __name__ == "__main__":
-    NumberGameApp().run()
+    try:
+        NumberGameApp().run()
+    except Exception:
+        import traceback
+        from kivy.base import runTouchApp
+        from kivy.uix.label import Label
+
+        error_text = traceback.format_exc()
+        print(error_text)
+
+        runTouchApp(
+            Label(
+                text="STARTUP ERROR\n\n" + error_text,
+                halign="left",
+                valign="top",
+                text_size=(None, None),
+            )
+        )
+
