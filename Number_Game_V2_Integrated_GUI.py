@@ -30,18 +30,9 @@ from kivy.utils import get_color_from_hex
 
 
 # SYSTEM 11A — LOAD THE EXISTING ENGINE, DON'T REBUILD ITS BRAIN
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ENGINE_PATH = os.path.join(BASE_DIR, "Number_Game_V2_fixed.py")
 
-if not os.path.exists(ENGINE_PATH):
-    raise FileNotFoundError(
-        "Could not find main.py. Put this GUI file in the Number_Game_V2 folder "
-        "beside main.py and the three existing JSON files."
-    )
+import Number_Game_V2_fixed as engine
 
-_spec = importlib.util.spec_from_file_location("number_game_v2_engine", ENGINE_PATH)
-engine = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(engine)
 
 
 # SYSTEM 11B — THEME
